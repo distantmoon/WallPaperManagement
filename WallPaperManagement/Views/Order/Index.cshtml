@@ -50,6 +50,9 @@
             处理用户
         </th>
         <th>
+            付款状态
+        </th>
+        <th>
             操作
         </th>
     </tr>
@@ -89,6 +92,9 @@
             </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.SystemUser.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayStatus)
             </td>
         
             <td>
