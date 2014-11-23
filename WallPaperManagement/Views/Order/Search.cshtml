@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "搜索订单";
+    DateTime currentDateTime = DateTime.Now.AddDays(1);
+    string tomorrow = string.Format("{0:D4}-{1:D2}-{2:D2}", currentDateTime.Year, currentDateTime.Month, currentDateTime.Day);
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+}
+<h2>搜索订单</h2>
+
+<p>
+    @Html.ActionLink("返回订单列表", "Create","Client",new {@class="btn btn-primary"})
+</p>
+@using (Ajax.BeginForm("SearchByDate", "Order", new AjaxOptions { UpdateTargetId = "orderListShow", InsertionMode = InsertionMode.Replace }))
+  {
+    <label>开始日期(日期格式:2014-03-16)</label><input type="text" name="beginDate" id="beginDate" value="1970-01-01"/>
+    <label>结束日期(日期格式:2014-03-16)</label><input type="text" name="endDate" id="endDate" value="@tomorrow"/>
+    <label>商品系列</label><input type="text" name="name" id="name"/>
+    <label>商品型号</label><input type="text" name="seriesName" id="seriesName"/>
+    <label>商品批号</label><input type="text" name="No" id="No"/>
+    <input type="submit" value="确定" class="btn btn-primary"/>
+  }
+
+<div id="orderListShow">
+    
+</div>
