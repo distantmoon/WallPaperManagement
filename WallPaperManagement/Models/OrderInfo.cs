@@ -23,5 +23,12 @@ namespace WallPaperManagement.Models
         public virtual ClientInfo ClientInfo { get; set; }
         public virtual WallPaper WallPaper { get; set; }
         public virtual SystemUser SystemUser { get; set; }
+
+
+    }
+
+     enum OrderPayStatus
+    {
+        Payed,Cash,Card
     }
 }
