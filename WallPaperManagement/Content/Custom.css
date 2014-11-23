@@ -1,7 +1,0 @@
-﻿  .diggpager {padding-right: 3px; padding-left: 3px; padding-bottom: 3px; margin: 3px; padding-top: 3px; text-align: center}
-.diggpager a {border-right: #aaaadd 1px solid; padding-right: 5px; border-top: #aaaadd 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #aaaadd 1px solid; color: #000099; padding-top: 2px; border-bottom: #aaaadd 1px solid; text-decoration: none}
-.diggpager a:hover {border-right: #000099 1px solid; border-top: #000099 1px solid; border-left: #000099 1px solid; color: #000; border-bottom: #000099 1px solid}
-.diggpager a:active {border-right: #000099 1px solid; border-top: #000099 1px solid; border-left: #000099 1px solid; color: #000; border-bottom: #000099 1px solid}
-.diggpager span.current {border-right: #000099 1px solid; padding-right: 5px; border-top: #000099 1px solid; padding-left: 5px; font-weight: bold; padding-bottom: 2px; margin: 2px; border-left: #000099 1px solid; color: #fff; padding-top: 2px; border-bottom: #000099 1px solid; background-color: #000099}
-.diggpager a.disabled {border-right: #eee 1px solid; padding-right: 5px; border-top: #eee 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #eee 1px solid; color: #ddd; padding-top: 2px; border-bottom: #eee 1px solid}
-
