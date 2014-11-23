@@ -1,0 +1,43 @@
+﻿@model WallPaperManagement.Models.ClientInfo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>ClientInfo</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Telephone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telephone)
+    </div>
+
+    <div class="display-label">Mobile</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mobile)
+    </div>
+
+    <div class="display-label">Address</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">AddDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddDate)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

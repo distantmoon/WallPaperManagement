@@ -1,0 +1,56 @@
+﻿@model List<WallPaperManagement.Models.ClientInfo>
+           
+
+
+<h3>客户姓名:@ViewBag.clientName   的搜索结果共  @Model.Count 条</h3>
+<table  class="table table-striped table-hover ">
+    <tr>
+        <th>
+            编号
+        </th> 
+        <th>
+            客户姓名
+        </th>
+        <th>
+            客户电话
+        </th>
+        <th>
+            客户手机
+        </th>
+        <th>
+            客户地址
+        </th>
+        <th>
+            添加日期
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @string.Format("{0:D8}",item.ClientInfoId)
+        </td> 
+        <td>
+            
+            @Html.ActionLink(item.Name,"Details","Client",new {id=item.ClientInfoId},null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddDate)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id=item.ClientInfoId },new {@class="btn"}) 
+        </td>
+    </tr>
+}
+
+</table>

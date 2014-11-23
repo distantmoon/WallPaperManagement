@@ -1,0 +1,43 @@
+﻿@model WallPaperManagement.Models.WallPaper
+
+@{
+    ViewBag.Title = "删除库存";
+}
+
+<h2>删除库存</h2>
+
+<h3>确定删除这条库存信息吗?</h3>
+<fieldset>
+    <legend>商品信息</legend>
+
+    <div class="display-label">商品名称</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">商品规格</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeriesName)
+    </div>
+
+    <div class="display-label">商品批号</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.No)
+    </div>
+
+    <div class="display-label">添加日期</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddDate)
+    </div>
+
+    <div class="display-label">库存数量</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="确定" class="btn btn-primary" /> 
+        @Html.ActionLink("Back to List", "Index","WallPaper",null,new {@class="btn"})
+    </p>
+}
