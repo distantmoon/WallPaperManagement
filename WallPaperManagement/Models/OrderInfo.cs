@@ -20,17 +20,14 @@ namespace WallPaperManagement.Models
         public int WallPaperId { get; set; }
         public int SystemUserId { get; set; }
 
-        public OrderPayStatus PayStatus { get; set; }
+        public int PayStatus { get; set; }
+
+        public string JustForTest { get; set; }
 
         public virtual ClientInfo ClientInfo { get; set; }
         public virtual WallPaper WallPaper { get; set; }
         public virtual SystemUser SystemUser { get; set; }
 
 
-    }
-
-   public  enum OrderPayStatus
-    {
-        已付款,转帐,未付款
     }
 }

@@ -114,6 +114,9 @@
             @Html.ValidationMessageFor(model => model.OrderCount)
         </div>
         <label >总价：</label><label data-bind="text: total"></label>
+        <select name="PayStatus">
+            <option value="2">ddddd</option>
+        </select>
         <p>
             <input type="submit" value="确定" class="btn btn-primary"/>  
             @Html.ActionLink("返回订单列表", "Index","Order",null,new {@class="btn"})
