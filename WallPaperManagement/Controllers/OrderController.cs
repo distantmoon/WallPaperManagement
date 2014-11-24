@@ -130,6 +130,7 @@ namespace WallPaperManagement.Controllers
                 wallPaper.Amount += orderInfoFind.OrderCount;
                 wallPaper.Amount -= orderinfo.OrderCount;
                 orderInfoFind.OrderCount = orderinfo.OrderCount;
+                orderInfoFind.PayStatus = orderinfo.PayStatus;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
