@@ -22,7 +22,6 @@ namespace WallPaperManagement.Models
 
         public int PayStatus { get; set; }
 
-        public string JustForTest { get; set; }
 
         public virtual ClientInfo ClientInfo { get; set; }
         public virtual WallPaper WallPaper { get; set; }
