@@ -5,7 +5,7 @@ namespace WallPaperManagement.Models
     public class WallPagerContext : DbContext
     {
 
-        public WallPagerContext()
+        public WallPagerContext():base("name=WallPaper")
         {
             Database.SetInitializer<WallPagerContext>(null);
         }
