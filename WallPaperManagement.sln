@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1414FC9A-C0FF-4665-B9F8-D48DCE745185}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1414FC
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaperManagement", "WallPaperManagement\WallPaperManagement.csproj", "{A3305598-EA51-4159-930C-140A8BD6A01C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaper.WPF", "Wallpaper.WPF\Wallpaper.WPF.csproj", "{89BAF40F-A310-4F0E-8404-2F477AEFA59D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaper.WebApi", "Wallpaper.WebApi\Wallpaper.WebApi.csproj", "{C0D1F367-954C-4E4F-9CDC-5172D9A235B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaper.DAL", "WallPaper.DAL\WallPaper.DAL.csproj", "{6FED323A-A568-4B60-A6FF-9C5258DD52E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +28,18 @@ Global
 		{A3305598-EA51-4159-930C-140A8BD6A01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3305598-EA51-4159-930C-140A8BD6A01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3305598-EA51-4159-930C-140A8BD6A01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BAF40F-A310-4F0E-8404-2F477AEFA59D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BAF40F-A310-4F0E-8404-2F477AEFA59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BAF40F-A310-4F0E-8404-2F477AEFA59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BAF40F-A310-4F0E-8404-2F477AEFA59D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0D1F367-954C-4E4F-9CDC-5172D9A235B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0D1F367-954C-4E4F-9CDC-5172D9A235B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0D1F367-954C-4E4F-9CDC-5172D9A235B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0D1F367-954C-4E4F-9CDC-5172D9A235B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FED323A-A568-4B60-A6FF-9C5258DD52E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FED323A-A568-4B60-A6FF-9C5258DD52E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FED323A-A568-4B60-A6FF-9C5258DD52E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FED323A-A568-4B60-A6FF-9C5258DD52E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
