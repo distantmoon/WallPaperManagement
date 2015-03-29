@@ -12,13 +12,14 @@ namespace WallPaper.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class WallPaper
+    public partial class WallPaper:IEntity
     {
         public int Id { get; set; }
         public string Model { get; set; }
         public string Series { get; set; }
         public string Number { get; set; }
-        public Nullable<int> Amount { get; set; }
         public Nullable<System.DateTime> AddTime { get; set; }
+        public Nullable<int> Amount { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }

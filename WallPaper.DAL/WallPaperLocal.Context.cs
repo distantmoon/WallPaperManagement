@@ -13,10 +13,10 @@ namespace WallPaper.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WallPaperString : DbContext
+    public partial class WallPaperDbContext : DbContext
     {
-        public WallPaperString()
-            : base("name=WallPaperString")
+        public WallPaperDbContext()
+            : base("name=WallPaperDbContext")
         {
         }
     
@@ -26,5 +26,6 @@ namespace WallPaper.DAL
         }
     
         public virtual DbSet<WallPaper> WallPaper { get; set; }
+        public virtual DbSet<Custom> Custom { get; set; }
     }
 }

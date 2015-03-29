@@ -119,7 +119,6 @@
     <Compile Include="Controllers\CustomJsonResult.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\WallpagerApiController.cs" />
     <Compile Include="Controllers\WallPaperController.cs" />
     <Compile Include="Controllers\WriteLog.cs" />
     <Compile Include="Global.asax.cs">

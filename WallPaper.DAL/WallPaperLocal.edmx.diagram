@@ -4,8 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d71a64cee30847a0a650e7b33f466746" Name="Diagram1">
-        <EntityTypeShape EntityType="WallPaper.DAL.Model.WallPaper" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="73d7693d78404beaa5daad317b3dafcc" Name="Diagram1">
+        <EntityTypeShape EntityType="WallPaperModel.WallPaper" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WallPaperModel.Custom" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -50,45 +50,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom.cs">
+      <DependentUpon>WallPaperLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WallPaper.cs">
-      <DependentUpon>WallPaperEDM.tt</DependentUpon>
+      <DependentUpon>WallPaperLocal.tt</DependentUpon>
     </Compile>
-    <Compile Include="WallPaperEDM.Context.cs">
+    <Compile Include="WallPaperLocal.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WallPaperEDM.Context.tt</DependentUpon>
+      <DependentUpon>WallPaperLocal.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="WallPaperEDM.cs">
+    <Compile Include="WallPaperLocal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WallPaperEDM.tt</DependentUpon>
+      <DependentUpon>WallPaperLocal.tt</DependentUpon>
     </Compile>
-    <Compile Include="WallPaperEDM.Designer.cs">
+    <Compile Include="WallPaperLocal.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WallPaperEDM.edmx</DependentUpon>
+      <DependentUpon>WallPaperLocal.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="WallPaperEDM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WallPaperEDM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="packages.config" />
-    <None Include="WallPaperEDM.Context.tt">
+    <EntityDeploy Include="WallPaperLocal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WallPaperLocal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WallPaperLocal.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WallPaperEDM.edmx</DependentUpon>
-      <LastGenOutput>WallPaperEDM.Context.cs</LastGenOutput>
+      <DependentUpon>WallPaperLocal.edmx</DependentUpon>
+      <LastGenOutput>WallPaperLocal.Context.cs</LastGenOutput>
     </None>
-    <None Include="WallPaperEDM.edmx.diagram">
-      <DependentUpon>WallPaperEDM.edmx</DependentUpon>
+    <None Include="WallPaperLocal.edmx.diagram">
+      <DependentUpon>WallPaperLocal.edmx</DependentUpon>
     </None>
-    <None Include="WallPaperEDM.tt">
+    <None Include="WallPaperLocal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WallPaperEDM.edmx</DependentUpon>
-      <LastGenOutput>WallPaperEDM.cs</LastGenOutput>
+      <DependentUpon>WallPaperLocal.edmx</DependentUpon>
+      <LastGenOutput>WallPaperLocal.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

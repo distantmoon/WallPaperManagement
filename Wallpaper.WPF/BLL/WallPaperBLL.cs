@@ -1,25 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using WallPaper.DAL;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using Wallpaper.WPF.Util;
 
 namespace Wallpaper.WPF.BLL
 {
-    public class WallPaperBLL
+    public class WallPaperBLL:BLLBase<WallPaper.DAL.WallPaper>
     {
-        public List<WallPaper.DAL.WallPaper> GetPage(int index, int recordPerPage)
+        public override string GetPageUrl()
         {
-            using (var db = new WallPaperString())
-            {
-                return db.Set<WallPaper.DAL.WallPaper>().OrderByDescending(p=>p.AddTime).Skip((index - 1)*recordPerPage).Take(20).ToList();
-            }
+            return "http://localhost:8099/WallPaper/GetPage";
         }
-
-        public int GetCount()
+        public override string GetCountUrl()
         {
-            using (var db = new WallPaperString())
-            {
-                return db.Set<WallPaper.DAL.WallPaper>().Count();
-            }
-        }
+            return "http://localhost:8099/WallPaper/GetCount";
+        } 
     }
 }

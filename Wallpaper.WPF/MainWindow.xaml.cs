@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Wallpaper.WPF.Model;
+using Wallpaper.WPF.Views.WallPaper;
 
 namespace Wallpaper.WPF
 {
@@ -8,13 +8,21 @@ namespace Wallpaper.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly WallPaperPageInfo _wallPaperPageInfo = new WallPaperPageInfo();
-      
-
         public MainWindow()
         {
             InitializeComponent();
-            this.WallPaperTab.DataContext = _wallPaperPageInfo;
+            MainGrid.Children.Add(new PaperList());
+        }
+
+        private void Show_Custom(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(new Views.ClientInfo.PaperList());
+        }
+
+        private void Show_WallPaper(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Add(new PaperList());
         }
     }
 }
