@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WallPaperManagement.Models
 {
-    public class WallPaper
+    public class WallPaper : CommonModel
     {
-        public int WallPaperId { get; set; }
 
         [Display(Name = "系列")]
         public string Name   { get; set; }
@@ -21,6 +20,7 @@ namespace WallPaperManagement.Models
 
          [Display(Name = "库存数量")]
         public int Amount { get; set; }
+
 
     }
 }
