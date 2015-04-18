@@ -1,0 +1,44 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>@ViewBag.Title</title>
+        <link href="@Url.Content("~/Content/Style/easyui.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/Style/pagination.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/Style/icon.css")" rel="stylesheet" />
+
+        <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/jquery.easyui.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/easyui-lang-zh_CN.js")"></script>
+    </head>
+    <body >
+        <div class="easyui-layout" data-options="fit:true" >
+            <div data-options="region:'north'" style="height:50px">
+                <h1>壁纸库存管理系统</h1>
+            </div>
+		
+            <div data-options="region:'west',split:true" style="width:100px;">
+                <div class="easyui-accordion" data-options="fit:true,border:false">
+                    <div title="库存管理" style="padding:10px;" data-options="selected:true">
+					<a href="@Url.Action("Index","WallPaper")" class="btn btn-block">查看库存</a>
+                    </div>
+                    <div title="订单管理"  style="padding:10px;">
+                        content2
+                    </div>
+                    <div title="客户管理" style="padding:10px">
+                        content3
+                    </div>
+                    <div title="用户管理" style="padding:10px">
+                        content3
+                    </div>
+                </div>
+            </div>
+            <div data-options="region:'center',iconCls:'icon-ok'" >
+                @RenderBody()
+            </div>
+        </div>
+        <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+        @RenderSection("Scripts",false)
+    </body>
+</html>

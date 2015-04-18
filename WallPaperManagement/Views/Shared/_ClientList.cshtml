@@ -26,7 +26,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @string.Format("{0:D8}",item.ClientInfoId)
+            @string.Format("{0:D8}",item.Id)
         </td> 
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            <input type="hidden" value="@item.ClientInfoId"/>
+            <input type="hidden" value="@item.Id"/>
             <input type="button" value="选择"　class="btn"　 onclick="setClient(this);"/>
         </td>
         

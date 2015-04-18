@@ -60,7 +60,7 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @string.Format("{0:D8}",item.OrderInfoId)
+                @string.Format("{0:D8}",item.Id)
             </td>
             <td>
                 @string.Format("{0:d}",item.CreateDate)
@@ -113,7 +113,7 @@
             </td>
         
             <td>
-                @Html.ActionLink("编辑", "Edit", new { id=item.OrderInfoId },new {@class="btn"}) 
+                @Html.ActionLink("编辑", "Edit", new { id=item.Id },new {@class="btn"}) 
             </td>
         </tr>
     }

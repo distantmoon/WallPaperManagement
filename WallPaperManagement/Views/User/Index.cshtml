@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WallPaperManagement.Models.SystemUser>
+﻿@*@model IEnumerable<WallPaperManagement.Models.SystemUser>
 
 @{
     ViewBag.Title = "用户列表";
@@ -31,13 +31,168 @@
         </td>
        
         <td>
-            @Html.ActionLink("编辑", "Edit", "User",new { id=item.SystemUserId },new {@class="btn"}) 
-           @* @if(item.UserName!="admin")
+            @Html.ActionLink("编辑", "Edit", "User",new { id=item.Id },new {@class="btn"}) 
+           $1$ @if(item.UserName!="admin")
             {
-            @Html.ActionLink("删除", "Delete", new { id=item.SystemUserId },new {@class="btn"})
-            }*@
+            @Html.ActionLink("删除", "Delete", new { id=item.Id },new {@class="btn"})
+            }#1#
         </td>
     </tr>
 }
 
+</table>*@
+@model   WallPaperManagement.Models.SystemUser
+
+@{
+    ViewBag.Title = "当前库存总量:" + "(" + ViewBag.Total + ")";
+}
+@*
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("添加新产品", "Create", "WallPaper", null, new { @class = "btn btn-primary" })
+</p>
+
+@using(Html.BeginForm("Search","WallPaper"))
+            {
+                <label>商品型号</label> <input type="text"  name="seriesName"/>
+                <label>商品系列</label> <input type="text"  name="Name"/>
+                <input type="submit" value="搜索" class="btn btn-primary"/>
+           }*@
+<table id="list_data" style="margin: 10px; width: 100%;">  
+    <thead>  
+        <tr>  
+            <th field="UserName" width="100">用户名</th>  
+            <th field="Password" width="100">密码</th>  
+        </tr>  
+    </thead>  
 </table>
+
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('#list_data').datagrid({
+                title: '当前库存列表',
+                iconCls: 'icon-edit', //图标  
+                width: 700,
+                height: 'auto',
+                nowrap: false,
+                striped: true,
+                border: true,
+                collapsible: false, //是否可折叠的  
+                fit: true, //自动大小  
+                url: '@Url.Action("AjaxPage", "User")',
+                //sortName: 'code',  
+                //sortOrder: 'desc',  
+                remoteSort: false,
+                idField: 'Id',
+                singleSelect: true, //是否单选  
+                pagination: true, //分页控件  
+                rownumbers: true, //行号 
+                stripped: true,
+                pagePosition: "both",
+                fitColumns: true,
+                pageSize: 10,
+                frozenColumns: [
+                    [
+                        { field: 'ck', checkbox: true }
+                    ]
+                ],
+                toolbar: [
+                    {
+                        text: '添加',
+                        iconCls: 'icon-add',
+                        handler: addWallpaper
+                    }, '-', {
+                        text: '修改',
+                        iconCls: 'icon-edit',
+                        handler: function() {
+                            // openDialog("add_dialog", "edit");
+                        }
+                    }, '-', {
+                        text: '搜索',
+                        iconCls: 'icon-search',
+                        handler: function() {
+                            //delAppInfo();
+                        }
+                    }
+                ],
+            });
+            var p = $('#list_data').datagrid('getPager');
+            $(p).pagination({
+                pageSize: 10, //每页显示的记录条数，默认为10  
+                pageList: [5, 10, 15], //可以设置每页记录条数的列表  
+                beforePageText: '第', //页数文本框前显示的汉字  
+                afterPageText: '页    共 {pages} 页',
+                displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录'
+            });
+        });
+    </script>
+    <script>
+        function addWallpaper() {
+            $('#createDialog').dialog('open').dialog('setTitle', '增加库存');
+            $('#fm').form('clear');
+        };
+
+        function saveWallpaper(formId) {
+            var $form = $('#'+formId);
+            if ($form.valid()) {
+                $form.submit();
+            }
+        };
+
+        function createCallback(data) {
+            if (data.Result) {
+                $('#createDialog').dialog('close');
+            } else {
+                alert("添加失败");
+            }
+        }
+    </script>
+}
+
+<div id="createDialog" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+		closed="true" buttons="#dlg-buttons">
+    @using (Ajax.BeginForm("Create", "WallPaper", new AjaxOptions { OnComplete = "createCallback" }, new { id = "createForm" }))
+    {
+    @*@Html.ValidationSummary(true)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeriesName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeriesName)
+            @Html.ValidationMessageFor(model => model.SeriesName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.No)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.No)
+            @Html.ValidationMessageFor(model => model.No)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>*@
+    }
+</div>
+ <div id="dlg-buttons">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveWallpaper('createForm','createDialog')">Save</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#createDialog').dialog('close')">Cancel</a>
+    </div>
