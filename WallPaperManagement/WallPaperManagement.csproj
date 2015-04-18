@@ -71,9 +71,10 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -113,9 +114,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
+    <Compile Include="Common\DataUtil.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\CustomController.cs" />
     <Compile Include="Controllers\CustomJsonResult.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -126,7 +131,9 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ClientInfo.cs" />
+    <Compile Include="Models\CommonModel.cs" />
     <Compile Include="Models\OrderInfo.cs" />
+    <Compile Include="Models\PageResult.cs" />
     <Compile Include="Models\SystemUser.cs" />
     <Compile Include="Models\WallPagerContext.cs" />
     <Compile Include="Models\WallPaper.cs" />
@@ -157,8 +164,68 @@
     <Content Include="Content\images\tabs_icons.png" />
     <Content Include="Content\images\tree_icons.png" />
     <Content Include="Content\images\validatebox_warning.png" />
-    <Content Include="Content\img\glyphicons-halflings-white.png" />
-    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\Style\easyui.css" />
+    <Content Include="Content\Style\icon.css" />
+    <Content Include="Content\Style\icons\back.png" />
+    <Content Include="Content\Style\icons\blank.gif" />
+    <Content Include="Content\Style\icons\cancel.png" />
+    <Content Include="Content\Style\icons\clear.png" />
+    <Content Include="Content\Style\icons\cut.png" />
+    <Content Include="Content\Style\icons\edit_add.png" />
+    <Content Include="Content\Style\icons\edit_remove.png" />
+    <Content Include="Content\Style\icons\filesave.png" />
+    <Content Include="Content\Style\icons\filter.png" />
+    <Content Include="Content\Style\icons\help.png" />
+    <Content Include="Content\Style\icons\large_chart.png" />
+    <Content Include="Content\Style\icons\large_clipart.png" />
+    <Content Include="Content\Style\icons\large_picture.png" />
+    <Content Include="Content\Style\icons\large_shapes.png" />
+    <Content Include="Content\Style\icons\large_smartart.png" />
+    <Content Include="Content\Style\icons\lock.png" />
+    <Content Include="Content\Style\icons\man.png" />
+    <Content Include="Content\Style\icons\mini_add.png" />
+    <Content Include="Content\Style\icons\mini_edit.png" />
+    <Content Include="Content\Style\icons\mini_refresh.png" />
+    <Content Include="Content\Style\icons\more.png" />
+    <Content Include="Content\Style\icons\no.png" />
+    <Content Include="Content\Style\icons\ok.png" />
+    <Content Include="Content\Style\icons\pencil.png" />
+    <Content Include="Content\Style\icons\print.png" />
+    <Content Include="Content\Style\icons\redo.png" />
+    <Content Include="Content\Style\icons\reload.png" />
+    <Content Include="Content\Style\icons\search.png" />
+    <Content Include="Content\Style\icons\sum.png" />
+    <Content Include="Content\Style\icons\tip.png" />
+    <Content Include="Content\Style\icons\undo.png" />
+    <Content Include="Content\Style\images\accordion_arrows.png" />
+    <Content Include="Content\Style\images\blank.gif" />
+    <Content Include="Content\Style\images\calendar_arrows.png" />
+    <Content Include="Content\Style\images\combo_arrow.png" />
+    <Content Include="Content\Style\images\datagrid_icons.png" />
+    <Content Include="Content\Style\images\datebox_arrow.png" />
+    <Content Include="Content\Style\images\layout_arrows.png" />
+    <Content Include="Content\Style\images\linkbutton_bg.png" />
+    <Content Include="Content\Style\images\loading.gif" />
+    <Content Include="Content\Style\images\menu_arrows.png" />
+    <Content Include="Content\Style\images\messager_icons.png" />
+    <Content Include="Content\Style\images\pagination_icons.png" />
+    <Content Include="Content\Style\images\panel_tools.png" />
+    <Content Include="Content\Style\images\searchbox_button.png" />
+    <Content Include="Content\Style\images\slider_handle.png" />
+    <Content Include="Content\Style\images\spinner_arrows.png" />
+    <Content Include="Content\Style\images\tabs_icons.png" />
+    <Content Include="Content\Style\images\tree_icons.png" />
+    <Content Include="Content\Style\images\validatebox_warning.png" />
+    <Content Include="Content\Style\layout.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\Style\pagination.css" />
+    <Content Include="Scripts\easyui-lang-zh_CN.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.easyui.min.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -216,6 +283,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -285,9 +353,11 @@
     <Content Include="Views\Shared\_OrderList.cshtml" />
     <Content Include="Views\WallPaper\NotEnough.cshtml" />
     <Content Include="Views\Order\Search.cshtml" />
+    <Content Include="Views\Shared\_EasyUILayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

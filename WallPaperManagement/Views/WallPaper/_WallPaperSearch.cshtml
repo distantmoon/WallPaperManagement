@@ -30,7 +30,7 @@
     {
         <tr>
             <td>
-                @string.Format("{0:D8}",item.WallPaperId)
+                @string.Format("{0:D8}",item.Id)
             </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -48,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                <input type="hidden" value="@item.WallPaperId"/>
+                <input type="hidden" value="@item.Id"/>
                <input type="button" value="选择" onclick="setWallPaper(this)" class="btn"/>
             </td>
         </tr>
