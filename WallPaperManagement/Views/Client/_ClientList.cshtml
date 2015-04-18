@@ -26,11 +26,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @string.Format("{0:D8}",item.ClientInfoId)
+            @string.Format("{0:D8}",item.Id)
         </td> 
         <td>
             
-            @Html.ActionLink(item.Name,"Details","Client",new {id=item.ClientInfoId},null)
+            @Html.ActionLink(item.Name,"Details","Client",new {id=item.Id},null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Telephone)
@@ -45,7 +45,7 @@
             @Html.DisplayFor(modelItem => item.AddDate)
         </td>
         <td>
-             <input type="hidden" value="@item.ClientInfoId"/>
+             <input type="hidden" value="@item.Id"/>
                <input type="button" value="选择" onclick="setClient(this)" class="btn"/>
         </td>
     </tr>
