@@ -44,14 +44,14 @@ namespace WallPaperManagement.Controllers
             ViewBag.WallPaperId = wallPapers.Select(p => new SelectListItem
             {
                 Text = p.Name+":"+p.SeriesName+":"+p.No,
-                Value = p.WallPaperId.ToString()
+                Value = p.Id.ToString()
             
             }).ToList();
             List<ClientInfo> clientInfos = db.ClientInfos.ToList();
-            ViewData.Add("ClientInfoId",clientInfos.Select(p=>new SelectListItem
+            ViewData.Add("Id",clientInfos.Select(p=>new SelectListItem
             {
                 Text = p.Name+":"+p.Mobile,
-                Value = p.ClientInfoId.ToString()
+                Value = p.Id.ToString()
             
             }).ToList());
             return View();
@@ -88,7 +88,7 @@ namespace WallPaperManagement.Controllers
                 string userName = this.User.Identity.Name;
                 SystemUser systemUser = db.SystemUsers.FirstOrDefault(p => p.UserName == userName);
 
-                orderinfo.SystemUserId = systemUser.SystemUserId;
+                orderinfo.SystemUserId = systemUser.Id;
 
                 db.OrderInfos.Add(orderinfo);
                 db.SaveChanges();
@@ -112,7 +112,7 @@ namespace WallPaperManagement.Controllers
         public ActionResult Edit(OrderInfo orderinfo)
         {
 
-            OrderInfo orderInfoFind=db.OrderInfos.Find(orderinfo.OrderInfoId);
+            OrderInfo orderInfoFind=db.OrderInfos.Find(orderinfo.Id);
             if (orderinfo.PriceDecimal!=orderInfoFind.PriceDecimal)
             {
                 orderInfoFind.PriceDecimal = orderinfo.PriceDecimal;

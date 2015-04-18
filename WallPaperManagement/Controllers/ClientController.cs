@@ -8,7 +8,7 @@ using Webdiyer.WebControls.Mvc;
 
 namespace WallPaperManagement.Controllers
 {
-    public class ClientController : Controller
+    public class ClientController : CustomController<ClientInfo>
     {
         private WallPagerContext db = new WallPagerContext();
 
@@ -18,8 +18,7 @@ namespace WallPaperManagement.Controllers
         [Authorize]
         public ViewResult Index(int id=1)
         {
-            PagedList<ClientInfo> clientInfos = db.ClientInfos.OrderBy(o => o.AddDate).ToPagedList(id, 15);
-            return View(clientInfos);
+            return View();
         }
 
         //
@@ -153,7 +152,7 @@ namespace WallPaperManagement.Controllers
            [Authorize]
         public ActionResult GetAllClient()
            {
-               var clientInfos = db.ClientInfos.Select(p=>new {Name=p.Name,Mobile=p.Mobile,ClientInfoId=p.ClientInfoId}).ToList();
+               var clientInfos = db.ClientInfos.Select(p=>new {Name=p.Name,Mobile=p.Mobile,ClientInfoId=p.Id}).ToList();
                return new JsonResult {Data = clientInfos, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
            }
 

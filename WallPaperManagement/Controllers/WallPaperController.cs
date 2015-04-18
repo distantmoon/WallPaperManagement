@@ -3,29 +3,27 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Newtonsoft.Json;
+using WallPaperManagement.Common;
 using WallPaperManagement.Models;
 using Webdiyer.WebControls.Mvc;
 
 namespace WallPaperManagement.Controllers
 {
-    public class WallPaperController : Controller
+    public class WallPaperController : CustomController<WallPaper>
     {
         private WallPagerContext db = new WallPagerContext();
-
         //
         // GET: /WallPager/
         [Authorize]
         public ActionResult Index(int id = 1)
         {
             ViewBag.Total = db.WallPapgers.Sum(p => p.Amount);
-
-           
-
-            PagedList<WallPaper> wallPapers = db.WallPapgers.Where(p=>p.Amount!=0).OrderByDescending(o => o.AddDate).ToPagedList(id, 15);
-            return View(wallPapers);
+            return View();
         }
 
         public ActionResult NotEnough()

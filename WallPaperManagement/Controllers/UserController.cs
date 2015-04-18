@@ -5,7 +5,7 @@ using WallPaperManagement.Models;
 
 namespace WallPaperManagement.Controllers
 {
-    public class UserController : Controller
+    public class UserController : CustomController<SystemUser>
     {
         private WallPagerContext db = new WallPagerContext();
 
@@ -14,7 +14,7 @@ namespace WallPaperManagement.Controllers
         [Authorize]
         public ViewResult Index()
         {
-            return View(db.SystemUsers.ToList());
+            return View();
         }
 
         //
