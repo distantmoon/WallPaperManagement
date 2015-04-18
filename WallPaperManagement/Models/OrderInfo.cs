@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WallPaperManagement.Models
 {
-    public class OrderInfo
+    public class OrderInfo : CommonModel
     {
-        public int OrderInfoId { get; set; }
 
         [Display(Name = "订单日期")]
         public DateTime CreateDate { get; set; }
@@ -16,9 +15,9 @@ namespace WallPaperManagement.Models
         [Display(Name = "数量")]
         public int OrderCount { get; set; }
 
-        public int ClientInfoId { get; set; }
-        public int WallPaperId { get; set; }
-        public int SystemUserId { get; set; }
+        public Int64 ClientInfoId { get; set; }
+        public Int64 WallPaperId { get; set; }
+        public Int64 SystemUserId { get; set; }
 
         public int PayStatus { get; set; }
 

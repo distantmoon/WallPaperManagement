@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 
 namespace WallPaperManagement.Models
 {
-    public class SystemUser
+    public class SystemUser : CommonModel
     {
-        public int SystemUserId { get; set; }
 
         [Display(Name = "用户名")]
         public string UserName { get; set; }
@@ -16,6 +14,4 @@ namespace WallPaperManagement.Models
         [Display(Name = "用户角色")]
         public string UserRole { get; set; }
     }
-
-   
 }

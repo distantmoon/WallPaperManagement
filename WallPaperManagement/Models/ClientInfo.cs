@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WallPaperManagement.Models
 {
-    public class ClientInfo
+    public class ClientInfo : CommonModel
     {
-        public int ClientInfoId { get; set; }
 
         [Display(Name = "客户名")]
         public string Name { get; set; }
