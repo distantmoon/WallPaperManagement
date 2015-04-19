@@ -1,0 +1,5 @@
+﻿@using(Ajax.BeginForm("Search","WallPaper",new AjaxOptions{OnComplete = "searchCallback"},new {id="searchForm"}))
+            {
+                <label>商品型号</label> <input type="text"  name="seriesName"/><br/>
+                <label>商品系列</label> <input type="text"  name="Name"/>
+           }

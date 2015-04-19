@@ -1,21 +1,7 @@
-﻿@model   WallPaperManagement.Models.WallPaper
-
+﻿
 @{
     ViewBag.Title = "当前库存总量:" + "(" + ViewBag.Total + ")";
 }
-@*
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @Html.ActionLink("添加新产品", "Create", "WallPaper", null, new { @class = "btn btn-primary" })
-</p>
-
-@using(Html.BeginForm("Search","WallPaper"))
-            {
-                <label>商品型号</label> <input type="text"  name="seriesName"/>
-                <label>商品系列</label> <input type="text"  name="Name"/>
-                <input type="submit" value="搜索" class="btn btn-primary"/>
-           }*@
 <table id="list_data" style="margin: 10px; width: 100%;">  
     <thead>  
         <tr>  
@@ -76,9 +62,7 @@
                     }, '-', {
                         text: '搜索',
                         iconCls: 'icon-search',
-                        handler: function() {
-                            //delAppInfo();
-                        }
+                        handler: searchWallpaper
                     }
                 ],
             });
@@ -95,7 +79,11 @@
     <script>
         function addWallpaper() {
             $('#createDialog').dialog('open').dialog('setTitle', '增加库存');
-            $('#fm').form('clear');
+            $('#createForm').form('clear');
+        };
+        function searchWallpaper() {
+            $('#searchDialog').dialog('open').dialog('setTitle', '搜索库存');
+            $('#searchForm').form('clear');
         };
 
         function saveWallpaper(formId) {
@@ -114,45 +102,5 @@
         }
     </script>
 }
-
-<div id="createDialog" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-		closed="true" buttons="#dlg-buttons">
-    @using (Ajax.BeginForm("Create", "WallPaper", new AjaxOptions { OnComplete = "createCallback" }, new { id = "createForm" }))
-    {
-    @Html.ValidationSummary(true)
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.SeriesName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.SeriesName)
-            @Html.ValidationMessageFor(model => model.SeriesName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.No)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.No)
-            @Html.ValidationMessageFor(model => model.No)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Amount)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Amount)
-            @Html.ValidationMessageFor(model => model.Amount)
-        </div>
-    }
-</div>
- <div id="dlg-buttons">
-	<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveWallpaper('createForm','createDialog')">Save</a>
-	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#createDialog').dialog('close')">Cancel</a>
-    </div>
+@Html.Partial("_CreateDialog")
+@Html.Partial("_SearchDialog")

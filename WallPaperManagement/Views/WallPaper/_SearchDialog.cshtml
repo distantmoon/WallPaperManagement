@@ -1,0 +1,8 @@
+﻿<div id="searchDialog" class="easyui-dialog" style="width:200px;height:180px;padding:10px 20px"
+		closed="true" buttons="#searchDialog-buttons">
+    @Html.Partial("_Search")
+</div>
+<div id="searchDialog-buttons">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveWallpaper('searchForm','createDialog')">搜索</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#searchDialog').dialog('close')">取消</a>
+</div>

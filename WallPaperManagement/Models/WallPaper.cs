@@ -1,10 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WallPaperManagement.Models
 {
-    public class WallPaper : CommonModel
+    public class WallPaper : CommonModel<WallPaper,long>
     {
+        [Key]
+        [Column("WallPaperId")]
+        public int Id { get; set; }
 
         [Display(Name = "系列")]
         public string Name   { get; set; }
@@ -21,6 +25,21 @@ namespace WallPaperManagement.Models
          [Display(Name = "库存数量")]
         public int Amount { get; set; }
 
+        public override Func<WallPaper, bool> GetWhereCondition()
+        {
+            return p => p.IsEnable == 1 && p.Amount > 0;
+        }
 
+        public override Func<WallPaper, long> GetSortCondition()
+        {
+            return p => p.Id;
+        }
+
+        public override void SetDefaultValue()
+        {
+            this.AddDate = DateTime.Now;
+            this.IsEnable = 1;
+            this.Id = 1;
+        }
     }
 }

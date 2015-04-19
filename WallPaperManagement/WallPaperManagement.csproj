@@ -354,6 +354,10 @@
     <Content Include="Views\WallPaper\NotEnough.cshtml" />
     <Content Include="Views\Order\Search.cshtml" />
     <Content Include="Views\Shared\_EasyUILayout.cshtml" />
+    <Content Include="Views\WallPaper\_Create.cshtml" />
+    <Content Include="Views\WallPaper\_Search.cshtml" />
+    <Content Include="Views\WallPaper\_CreateDialog.cshtml" />
+    <Content Include="Views\WallPaper\_SearchDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

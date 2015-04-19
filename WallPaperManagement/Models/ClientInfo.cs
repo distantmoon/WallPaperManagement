@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WallPaperManagement.Models
 {
-    public class ClientInfo : CommonModel
+    public class ClientInfo : CommonModel<ClientInfo,long>
     {
-
+        [Key]
+        [Column("ClientInfoId")]
+        public int Id { get; set; }
         [Display(Name = "客户名")]
         public string Name { get; set; }
 
@@ -20,6 +23,15 @@ namespace WallPaperManagement.Models
         public string Address { get; set; }
         public DateTime AddDate { get; set; }
 
-        virtual public List<OrderInfo> OrderInfos { get; set; } 
+        virtual public List<OrderInfo> OrderInfos { get; set; }
+        public override Func<ClientInfo, bool> GetWhereCondition()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Func<ClientInfo, long> GetSortCondition()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

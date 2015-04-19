@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using System.Web.Routing;
-using Newtonsoft.Json;
-using WallPaperManagement.Common;
 using WallPaperManagement.Models;
-using Webdiyer.WebControls.Mvc;
 
 namespace WallPaperManagement.Controllers
 {
     public class WallPaperController : CustomController<WallPaper>
     {
-        private WallPagerContext db = new WallPagerContext();
+        private readonly WallPagerContext db = new WallPagerContext();
         //
         // GET: /WallPager/
         [Authorize]
@@ -26,23 +19,32 @@ namespace WallPaperManagement.Controllers
             return View();
         }
 
+        public ActionResult CreateDialog()
+        {
+            return PartialView("_Create");
+        }
+
         public ActionResult NotEnough()
         {
-            List<string> seriesList = db.WallPapgers.Where(p => p.Amount != 0).OrderByDescending(p => p.Amount).Take(100).Select(p=>p.SeriesName).ToList();
-                
-                //db.WallPapgers.Where(p => p.Amount != 0 && p.Amount < 20).Select(p => p.SeriesName).Distinct().ToList();
-                                      ;
-                                     
+            List<string> seriesList =
+                db.WallPapgers.Where(p => p.Amount != 0)
+                    .OrderByDescending(p => p.Amount)
+                    .Take(100)
+                    .Select(p => p.SeriesName)
+                    .ToList();
 
-                
-                //db.WallPapgers.Where(p => p.Amount != 0).Select(p => p.SeriesName).Distinct().ToList();
-            Dictionary<string, int> current = new Dictionary<string, int>();
+            //db.WallPapgers.Where(p => p.Amount != 0 && p.Amount < 20).Select(p => p.SeriesName).Distinct().ToList();
+            ;
+
+
+            //db.WallPapgers.Where(p => p.Amount != 0).Select(p => p.SeriesName).Distinct().ToList();
+            var current = new Dictionary<string, int>();
             foreach (string paperSeries in seriesList)
             {
                 int sum = db.WallPapgers.Where(p => p.Amount != 0 && p.SeriesName == paperSeries).Sum(p => p.Amount);
                 if (sum < 20)
                 {
-                    current.Add(paperSeries,sum);
+                    current.Add(paperSeries, sum);
                 }
             }
             ViewBag.NotEnough = current;
@@ -86,17 +88,17 @@ namespace WallPaperManagement.Controllers
         // POST: /WallPager/Create
         [Authorize]
         [HttpPost]
-        public ActionResult Create(WallPaper wallpaper)
+        public ActionResult Create(WallPaper item)
         {
-            wallpaper.AddDate = DateTime.Now;
+            WallPagerContext dataContext = new WallPagerContext();
             if (ModelState.IsValid)
             {
-                db.WallPapgers.Add(wallpaper);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                item.SetDefaultValue();
+                dataContext.Set<WallPaper>().Add(item);
+                dataContext.SaveChanges();
             }
 
-            return View(wallpaper);
+            return Content("");
         }
 
         //
@@ -151,11 +153,12 @@ namespace WallPaperManagement.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Search(string seriesName,string name,int id=1)
+        public ActionResult Search(string seriesName, string name, int id = 1)
         {
             if (Request.IsAjaxRequest())
             {
-                List<WallPaper> wallPapersAjax = db.WallPapgers.Where(p =>p.Amount!=0 && p.SeriesName.Contains(seriesName)).ToList();
+                List<WallPaper> wallPapersAjax =
+                    db.WallPapgers.Where(p => p.Amount != 0 && p.SeriesName.Contains(seriesName)).ToList();
 
                 return PartialView("_WallPaperSearch", wallPapersAjax);
             }
@@ -167,7 +170,9 @@ namespace WallPaperManagement.Controllers
                 if (!string.IsNullOrEmpty(name))
                 {
                     ViewBag.Name = name;
-                    wallPapers = db.WallPapgers.Where(p =>p.Amount!=0 &&  p.Name.Contains(name) && p.SeriesName.Contains(seriesName)).ToList();
+                    wallPapers =
+                        db.WallPapgers.Where(
+                            p => p.Amount != 0 && p.Name.Contains(name) && p.SeriesName.Contains(seriesName)).ToList();
                 }
                 else
                 {
@@ -183,11 +188,11 @@ namespace WallPaperManagement.Controllers
                 }
                 else
                 {
-                    wallPapers = db.WallPapgers.Where(p=>p.Amount!=0 ).ToList();
+                    wallPapers = db.WallPapgers.Where(p => p.Amount != 0).ToList();
                 }
             }
-            
-            ViewBag.Total=wallPapers.Sum(p => p.Amount);
+
+            ViewBag.Total = wallPapers.Sum(p => p.Amount);
             return View("Search", wallPapers);
         }
     }

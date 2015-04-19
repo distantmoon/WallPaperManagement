@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WallPaperManagement.Models
 {
     public class OrderInfo : CommonModel
     {
-
+        [Key]
+        [Column("OrderInfoId")]
+        public int Id { get; set; }
         [Display(Name = "订单日期")]
         public DateTime CreateDate { get; set; }
 
